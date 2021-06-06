@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { FC } from 'react';
-import Button from '@material-ui/core/Button';
+import Button from '../foundation/ui/ui-link-button/UILinkButton';
 import { makeStyles } from '@material-ui/core/styles';
-import { Link } from 'react-router-dom';
 import { useTranslate, FieldProps } from 'react-admin';
 import { stringify } from 'query-string';
 
@@ -23,8 +22,7 @@ const LinkToRelatedProducts: FC<FieldProps<Category>> = ({ record }) => {
     return record ? (
         <Button
             size="small"
-            color="primary"
-            component={Link}
+            variant="neutral"
             to={{
                 pathname: '/products',
                 search: stringify({

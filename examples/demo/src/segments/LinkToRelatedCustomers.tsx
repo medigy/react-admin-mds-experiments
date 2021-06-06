@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { FC } from 'react';
-import Button from '@material-ui/core/Button';
+import UILinkButton from '../foundation/ui/ui-link-button/UILinkButton';
 import { makeStyles } from '@material-ui/core/styles';
-import { Link } from 'react-router-dom';
 import { useTranslate } from 'react-admin';
 import { stringify } from 'query-string';
 
@@ -20,10 +19,10 @@ const LinkToRelatedCustomers: FC<{ segment: string }> = ({ segment }) => {
     const translate = useTranslate();
     const classes = useStyles();
     return (
-        <Button
+        <UILinkButton
             size="small"
             color="primary"
-            component={Link}
+            variant="base"
             to={{
                 pathname: '/customers',
                 search: stringify({
@@ -34,7 +33,7 @@ const LinkToRelatedCustomers: FC<{ segment: string }> = ({ segment }) => {
         >
             <visitors.icon className={classes.icon} />
             {translate('resources.segments.fields.customers')}
-        </Button>
+        </UILinkButton>
     );
 };
 

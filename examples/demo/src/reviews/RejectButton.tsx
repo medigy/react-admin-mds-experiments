@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { FC } from 'react';
 import PropTypes from 'prop-types';
-import Button from '@material-ui/core/Button';
+import Button from '../foundation/ui/ui-button/Button';
 import ThumbDown from '@material-ui/icons/ThumbDown';
 import { useTranslate, useUpdate, useNotify, useRedirect } from 'react-admin';
 import { Review } from '../types';
@@ -41,7 +41,7 @@ const RejectButton: FC<{ record: Review }> = ({ record }) => {
 
     return record && record.status === 'pending' ? (
         <Button
-            variant="outlined"
+            variant="outline-brand"
             color="primary"
             size="small"
             onClick={reject}
