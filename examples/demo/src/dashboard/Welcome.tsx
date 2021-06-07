@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { FC } from 'react';
-import { Box, Card, CardActions, Button, Typography } from '@material-ui/core';
+import { Box, Card, CardActions, Typography } from '@material-ui/core';
+import Button from '../foundation/ui/ui-link-button/UILinkButton';
 import HomeIcon from '@material-ui/icons/Home';
 import CodeIcon from '@material-ui/icons/Code';
 import { makeStyles } from '@material-ui/core/styles';
@@ -53,18 +54,14 @@ const Welcome: FC = () => {
                         </Typography>
                     </Box>
                     <CardActions className={classes.actions}>
-                        <Button
-                            variant="contained"
-                            href="https://marmelab.com/react-admin"
-                            startIcon={<HomeIcon />}
-                        >
-                            {translate('pos.dashboard.welcome.ra_button')}
+                        <Button href="https://marmelab.com/react-admin">
+                            <HomeIcon style={{ marginRight: 5 }} />
+                            {translate(
+                                'pos.dashboard.welcome.ra_button'
+                            ).toUpperCase()}
                         </Button>
-                        <Button
-                            variant="contained"
-                            href="https://github.com/marmelab/react-admin/tree/master/examples/demo"
-                            startIcon={<CodeIcon />}
-                        >
+                        <Button href="https://github.com/marmelab/react-admin/tree/master/examples/demo">
+                            <CodeIcon style={{ marginRight: 5 }} />
                             {translate('pos.dashboard.welcome.demo_button')}
                         </Button>
                     </CardActions>

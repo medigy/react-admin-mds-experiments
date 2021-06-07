@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import ThumbUp from '@material-ui/icons/ThumbUp';
 
 import {
-    Button,
     useUpdateMany,
     useNotify,
     useRefresh,
@@ -12,13 +11,16 @@ import {
     CRUD_UPDATE_MANY,
     BulkActionProps,
     Identifier,
+    useTranslate,
 } from 'react-admin';
+import Button from '../foundation/ui/ui-button/Button';
 
 const noSelection: Identifier[] = [];
 
 const BulkAcceptButton: FC<BulkActionProps> = ({
     selectedIds = noSelection,
 }) => {
+    const translate = useTranslate();
     const notify = useNotify();
     const refresh = useRefresh();
     const unselectAll = useUnselectAll('reviews');
@@ -50,12 +52,9 @@ const BulkAcceptButton: FC<BulkActionProps> = ({
     );
 
     return (
-        <Button
-            label="resources.reviews.action.accept"
-            onClick={approve}
-            disabled={loading}
-        >
-            <ThumbUp />
+        <Button onClick={approve} disabled={loading} variant={'base'}>
+            <ThumbUp style={{ marginRight: 5 }} />
+            {translate('resources.reviews.action.accept')}
         </Button>
     );
 };

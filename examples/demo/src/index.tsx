@@ -27,7 +27,7 @@ const prepareDataProvider = async () => {
 
 prepareDataProvider().then(({ dataProvider, restoreFetch }) => {
     ReactDOM.render(
-        <IconSettings iconPath="/icons">
+        <IconSettings iconPath="/assets/icons">
             <App dataProvider={dataProvider} onUnmount={restoreFetch} />
         </IconSettings>,
         document.getElementById('root')

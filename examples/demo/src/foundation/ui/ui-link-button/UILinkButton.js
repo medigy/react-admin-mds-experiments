@@ -6,9 +6,13 @@ const UIButton = props => {
     const { history } = props;
 
     const onClickHandler = () => {
-        history.push({
-            ...props.to,
-        });
+        if (props.to) {
+            history.push({
+                ...props.to,
+            });
+        } else if (props.href) {
+            window.open(props.href, '_self');
+        }
     };
 
     return (

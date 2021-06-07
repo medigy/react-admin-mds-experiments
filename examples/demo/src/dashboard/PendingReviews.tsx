@@ -3,7 +3,6 @@ import { FC } from 'react';
 import {
     Avatar,
     Box,
-    Button,
     List,
     ListItem,
     ListItemAvatar,
@@ -13,6 +12,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import CommentIcon from '@material-ui/icons/Comment';
 import { Link } from 'react-router-dom';
 import { useTranslate } from 'react-admin';
+import UILinkButton from '../foundation/ui/ui-link-button/UILinkButton';
 
 import CardWithIcon from './CardWithIcon';
 import StarRatingField from '../reviews/StarRatingField';
@@ -66,17 +66,11 @@ const PendingReviews: FC<Props> = ({ reviews = [], customers = {}, nb }) => {
                 ))}
             </List>
             <Box flexGrow="1">&nbsp;</Box>
-            <Button
-                className={classes.link}
-                component={Link}
-                to="/reviews"
-                size="small"
-                color="primary"
-            >
+            <UILinkButton className={classes.link} to="/reviews">
                 <Box p={1} className={classes.linkContent}>
                     {translate('pos.dashboard.all_reviews')}
                 </Box>
-            </Button>
+            </UILinkButton>
         </CardWithIcon>
     );
 };

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import ThumbDown from '@material-ui/icons/ThumbDown';
 
 import {
-    Button,
+    useTranslate,
     useUpdateMany,
     useNotify,
     useRefresh,
@@ -13,6 +13,7 @@ import {
     BulkActionProps,
     Identifier,
 } from 'react-admin';
+import Button from '../foundation/ui/ui-button/Button';
 
 const noSelection: Identifier[] = [];
 
@@ -21,6 +22,7 @@ const BulkRejectButton: FC<BulkActionProps> = ({
 }) => {
     const notify = useNotify();
     const refresh = useRefresh();
+    const translate = useTranslate();
     const unselectAll = useUnselectAll('reviews');
 
     const [reject, { loading }] = useUpdateMany(
@@ -50,12 +52,9 @@ const BulkRejectButton: FC<BulkActionProps> = ({
     );
 
     return (
-        <Button
-            label="resources.reviews.action.reject"
-            onClick={reject}
-            disabled={loading}
-        >
-            <ThumbDown />
+        <Button onClick={reject} disabled={loading} variant="base">
+            <ThumbDown style={{ marginRight: 5 }} />
+            {translate('resources.reviews.action.reject')}
         </Button>
     );
 };
