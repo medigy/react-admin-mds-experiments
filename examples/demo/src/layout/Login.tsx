@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 import { Field, withTypes } from 'react-final-form';
 import { useLocation } from 'react-router-dom';
 
-import { CardActions, CircularProgress, TextField } from '@material-ui/core';
+import { CardActions, CircularProgress } from '@material-ui/core';
+import Input from '../netspective-studios/design-system/components/input/Input';
 import Card from '../netspective-studios/design-system/components/card/Card';
 import Button from '../foundation/ui/ui-button/Button';
 import Avatar from '../netspective-studios/design-system/components/avatar/Avatar';
@@ -59,15 +60,17 @@ const renderInput = ({
     meta: { touched, error } = { touched: false, error: undefined },
     input: { ...inputProps },
     ...props
-}) => (
-    <TextField
-        error={!!(touched && error)}
-        helperText={touched && error}
-        {...inputProps}
-        {...props}
-        fullWidth
-    />
-);
+}) => {
+    console.log(error);
+    return (
+        <Input
+            errorText={!!(touched && error) ? error : ''}
+            {...inputProps}
+            {...props}
+            fullWidth
+        />
+    );
+};
 
 interface FormValues {
     username?: string;
@@ -145,6 +148,7 @@ const Login = () => {
                                         component={renderInput}
                                         label={translate('ra.auth.username')}
                                         disabled={loading}
+                                        placeholder="Username"
                                     />
                                 </div>
                                 <div className={classes.input}>
@@ -155,6 +159,7 @@ const Login = () => {
                                         label={translate('ra.auth.password')}
                                         type="password"
                                         disabled={loading}
+                                        placeholder="Password"
                                     />
                                 </div>
                             </div>
