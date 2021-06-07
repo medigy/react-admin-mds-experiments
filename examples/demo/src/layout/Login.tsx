@@ -6,12 +6,12 @@ import { useLocation } from 'react-router-dom';
 
 import {
     Avatar,
-    Button,
     Card,
     CardActions,
     CircularProgress,
     TextField,
 } from '@material-ui/core';
+import Button from '../foundation/ui/ui-button/Button';
 import { createMuiTheme, makeStyles } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 import LockIcon from '@material-ui/icons/Lock';
@@ -164,11 +164,12 @@ const Login = () => {
                             </div>
                             <CardActions className={classes.actions}>
                                 <Button
-                                    variant="contained"
+                                    variant="brand"
                                     type="submit"
-                                    color="primary"
                                     disabled={loading}
-                                    fullWidth
+                                    style={{
+                                        width: '100%',
+                                    }}
                                 >
                                     {loading && (
                                         <CircularProgress
