@@ -5,13 +5,13 @@ import { Field, withTypes } from 'react-final-form';
 import { useLocation } from 'react-router-dom';
 
 import {
-    Avatar,
     Card,
     CardActions,
     CircularProgress,
     TextField,
 } from '@material-ui/core';
 import Button from '../foundation/ui/ui-button/Button';
+import Avatar from '../netspective-studios/design-system/components/avatar/Avatar';
 import { createMuiTheme, makeStyles } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 import LockIcon from '@material-ui/icons/Lock';

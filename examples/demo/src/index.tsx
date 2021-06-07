@@ -8,6 +8,7 @@ import dataProviderFactory from './dataProvider';
 import fakeServerFactory from './fakeServer';
 import App from './App';
 import IconSettings from '@salesforce/design-system-react/components/icon-settings';
+import standardSprite from '@salesforce-ux/design-system/assets/icons/standard-sprite/svg/symbols.svg';
 
 /**
  * This demo can work with either a fake REST server, or a fake GraphQL server.
@@ -27,7 +28,7 @@ const prepareDataProvider = async () => {
 
 prepareDataProvider().then(({ dataProvider, restoreFetch }) => {
     ReactDOM.render(
-        <IconSettings iconPath="/assets/icons">
+        <IconSettings standardSprite={standardSprite}>
             <App dataProvider={dataProvider} onUnmount={restoreFetch} />
         </IconSettings>,
         document.getElementById('root')

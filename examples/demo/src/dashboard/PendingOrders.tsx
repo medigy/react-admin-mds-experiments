@@ -7,7 +7,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import ListItemText from '@material-ui/core/ListItemText';
-import Avatar from '@material-ui/core/Avatar';
+import Avatar from '../netspective-studios/design-system/components/avatar/Avatar';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 import { useTranslate } from 'react-admin';
@@ -48,6 +48,7 @@ const PendingOrders: FC<Props> = ({ orders = [], customers = {} }) => {
                                     src={`${
                                         customers[record.customer_id].avatar
                                     }?size=32x32`}
+                                    size="medium"
                                 />
                             ) : (
                                 <Avatar />

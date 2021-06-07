@@ -32,7 +32,9 @@ const FullNameField: FC<Props> = ({ record, size }) => {
                 record={record}
                 size={size}
             />
-            {record.first_name} {record.last_name}
+            <span style={{ marginLeft: 5 }}>
+                {record.first_name} {record.last_name}
+            </span>
         </div>
     ) : null;
 };

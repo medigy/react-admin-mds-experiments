@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {
-    Avatar,
     Box,
     Button,
     List,
@@ -8,6 +7,7 @@ import {
     ListItemAvatar,
     ListItemText,
 } from '@material-ui/core';
+import Avatar from '../netspective-studios/design-system/components/avatar/Avatar';
 import { makeStyles } from '@material-ui/core/styles';
 import CustomerIcon from '@material-ui/icons/PersonAdd';
 import { Link } from 'react-router-dom';

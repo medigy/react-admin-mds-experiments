@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { FC } from 'react';
 import {
-    Avatar,
     Box,
     List,
     ListItem,
     ListItemAvatar,
     ListItemText,
 } from '@material-ui/core';
+import Avatar from '../netspective-studios/design-system/components/avatar/Avatar';
 import { makeStyles } from '@material-ui/core/styles';
 import CommentIcon from '@material-ui/icons/Comment';
 import { Link } from 'react-router-dom';
@@ -49,6 +49,8 @@ const PendingReviews: FC<Props> = ({ reviews = [], customers = {}, nb }) => {
                                     src={`${
                                         customers[record.customer_id].avatar
                                     }?size=32x32`}
+                                    size="medium"
+                                    variant="user"
                                     className={classes.avatar}
                                 />
                             ) : (
@@ -81,7 +83,7 @@ const useStyles = makeStyles(theme => ({
     },
     listItemText: {
         overflowY: 'hidden',
-        height: '4em',
+        height: '5em',
         display: '-webkit-box',
         WebkitLineClamp: 2,
         WebkitBoxOrient: 'vertical',
