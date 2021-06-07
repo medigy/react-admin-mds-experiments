@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { FC } from 'react';
-import Card from '@material-ui/core/Card';
+import Card from '../netspective-studios/design-system/components/card/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
@@ -32,7 +32,11 @@ const InvoiceShow = (props: any) => {
 
     if (!record) return null;
     return (
-        <Card className={classes.root}>
+        <Card
+            className={classes.root}
+            hasNoHeader
+            bodyClassName={classes.cardBody}
+        >
             <CardContent>
                 <Grid container spacing={2}>
                     <Grid item xs={6}>
@@ -113,6 +117,10 @@ export default InvoiceShow;
 
 const useStyles = makeStyles({
     root: { width: 600, margin: 'auto' },
+    cardBody: {
+        margin: 0,
+        padding: 0,
+    },
     spacer: { height: 20 },
     invoices: { margin: '10px 0' },
 });

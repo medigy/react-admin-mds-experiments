@@ -68,7 +68,7 @@ const PendingReviews: FC<Props> = ({ reviews = [], customers = {}, nb }) => {
                 ))}
             </List>
             <Box flexGrow="1">&nbsp;</Box>
-            <UILinkButton className={classes.link} to="/reviews">
+            <UILinkButton className={classes.link} to="/reviews" variant="base">
                 <Box p={1} className={classes.linkContent}>
                     {translate('pos.dashboard.all_reviews')}
                 </Box>
@@ -90,6 +90,8 @@ const useStyles = makeStyles(theme => ({
     },
     link: {
         borderRadius: 0,
+        display: 'flex',
+        justifyContent: 'center',
     },
     linkContent: {
         color: theme.palette.primary.main,

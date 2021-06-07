@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '../foundation/ui/ui-button/Button';
+import Card from '../netspective-studios/design-system/components/card/Card';
 import { useTranslate, useLocale, useSetLocale, Title } from 'react-admin';
 import { makeStyles } from '@material-ui/core/styles';
 import { changeTheme } from './actions';
@@ -10,6 +10,9 @@ import { AppState } from '../types';
 
 const useStyles = makeStyles({
     label: { width: '10em', display: 'inline-block' },
+    cardBody: {
+        marginTop: 0,
+    },
     button: { margin: '1em' },
 });
 
@@ -21,7 +24,7 @@ const Configuration = () => {
     const theme = useSelector((state: AppState) => state.theme);
     const dispatch = useDispatch();
     return (
-        <Card>
+        <Card hasNoHeader bodyClassName={classes.cardBody}>
             <Title title={translate('pos.configuration')} />
             <CardContent>
                 <div className={classes.label}>

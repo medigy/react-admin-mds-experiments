@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { FC } from 'react';
-import Card from '@material-ui/core/Card';
+import Card from '../netspective-studios/design-system/components/card/Card';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -16,13 +16,21 @@ const useStyles = makeStyles({
     root: {
         marginTop: 16,
     },
+    cardBody: {
+        margin: 0,
+        padding: 0,
+    },
 });
 
 const Segments: FC = () => {
     const translate = useTranslate();
     const classes = useStyles();
     return (
-        <Card className={classes.root}>
+        <Card
+            className={classes.root}
+            hasNoHeader
+            bodyClassName={classes.cardBody}
+        >
             <Title
                 title={translate('resources.segments.name', { smart_count: 2 })}
             />

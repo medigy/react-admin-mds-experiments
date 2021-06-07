@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { FC } from 'react';
-import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
+import Card from '../netspective-studios/design-system/components/card/Card';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
@@ -22,6 +21,11 @@ const useStyles = makeStyles(theme => ({
     root: {
         flex: 1,
     },
+    cardBody: {
+        flex: 1,
+        margin: 0,
+        padding: 0,
+    },
     cost: {
         marginRight: '1em',
         color: theme.palette.text.primary,
@@ -32,8 +36,12 @@ const PendingOrders: FC<Props> = ({ orders = [], customers = {} }) => {
     const classes = useStyles();
     const translate = useTranslate();
     return (
-        <Card className={classes.root}>
-            <CardHeader title={translate('pos.dashboard.pending_orders')} />
+        <Card
+            className={classes.root}
+            header={null}
+            bodyClassName={classes.cardBody}
+            heading={translate('pos.dashboard.pending_orders')}
+        >
             <List dense={true}>
                 {orders.map(record => (
                     <ListItem

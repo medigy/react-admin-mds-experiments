@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { FC, createElement } from 'react';
-import { Card, Box, Typography, Divider } from '@material-ui/core';
+import { Box, Typography, Divider } from '@material-ui/core';
+import Card from '../netspective-studios/design-system/components/card/Card';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 
@@ -16,6 +17,18 @@ interface Props {
 
 const useStyles = makeStyles(theme => ({
     card: {
+        minHeight: 52,
+        display: 'flex',
+        flexDirection: 'column',
+        flex: '1',
+        '& a': {
+            textDecoration: 'none',
+            color: 'inherit',
+        },
+    },
+    cardBody: {
+        margin: 0,
+        padding: 0,
         minHeight: 52,
         display: 'flex',
         flexDirection: 'column',
@@ -45,7 +58,13 @@ const CardWithIcon: FC<Props> = props => {
     const { icon, title, subtitle, to, children } = props;
     const classes = useStyles(props);
     return (
-        <Card className={classes.card}>
+        <Card
+            className={classes.card}
+            bodyClassName={classes.cardBody}
+            header={null}
+            style={{ margin: 0, padding: 0 }}
+            hasNoHeader
+        >
             <Link to={to}>
                 <div className={classes.main}>
                     <Box width="3em" className="icon">

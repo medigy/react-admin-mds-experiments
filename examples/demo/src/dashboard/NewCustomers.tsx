@@ -1,12 +1,12 @@
 import * as React from 'react';
 import {
     Box,
-    Button,
     List,
     ListItem,
     ListItemAvatar,
     ListItemText,
 } from '@material-ui/core';
+import UILinkButton from '../foundation/ui/ui-link-button/UILinkButton';
 import Avatar from '../netspective-studios/design-system/components/avatar/Avatar';
 import { makeStyles } from '@material-ui/core/styles';
 import CustomerIcon from '@material-ui/icons/PersonAdd';
@@ -71,17 +71,15 @@ const NewCustomers = () => {
                     : null}
             </List>
             <Box flexGrow="1">&nbsp;</Box>
-            <Button
+            <UILinkButton
                 className={classes.link}
-                component={Link}
                 to="/customers"
-                size="small"
-                color="primary"
+                variant="base"
             >
                 <Box p={1} className={classes.linkContent}>
                     {translate('pos.dashboard.all_customers')}
                 </Box>
-            </Button>
+            </UILinkButton>
         </CardWithIcon>
     );
 };
@@ -89,6 +87,8 @@ const NewCustomers = () => {
 const useStyles = makeStyles(theme => ({
     link: {
         borderRadius: 0,
+        display: 'flex',
+        justifyContent: 'center',
     },
     linkContent: {
         color: theme.palette.primary.main,

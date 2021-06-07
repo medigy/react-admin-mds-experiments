@@ -4,12 +4,12 @@ import { EditButton, List, ListProps, useListContext } from 'react-admin';
 import inflection from 'inflection';
 import {
     Grid,
-    Card,
     CardMedia,
     CardContent,
     CardActions,
     Typography,
 } from '@material-ui/core';
+import Card from '../netspective-studios/design-system/components/card/Card';
 import { makeStyles } from '@material-ui/core/styles';
 
 import LinkToRelatedProducts from './LinkToRelatedProducts';
@@ -25,6 +25,9 @@ const useStyles = makeStyles({
     title: {
         paddingBottom: '0.5em',
     },
+    cardBody: {
+        marginTop: 0,
+    },
     actionSpacer: {
         display: 'flex',
         justifyContent: 'space-around',
@@ -38,7 +41,7 @@ const CategoryGrid: FC = props => {
         <Grid container spacing={2} className={classes.root}>
             {ids.map(id => (
                 <Grid key={id} xs={12} sm={6} md={4} lg={3} xl={2} item>
-                    <Card>
+                    <Card hasNoHeader bodyClassName={classes.cardBody}>
                         <CardMedia
                             image={`https://marmelab.com/posters/${data[id].name}-1.jpeg`}
                             className={classes.media}

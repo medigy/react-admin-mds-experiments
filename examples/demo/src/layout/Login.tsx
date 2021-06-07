@@ -4,12 +4,8 @@ import PropTypes from 'prop-types';
 import { Field, withTypes } from 'react-final-form';
 import { useLocation } from 'react-router-dom';
 
-import {
-    Card,
-    CardActions,
-    CircularProgress,
-    TextField,
-} from '@material-ui/core';
+import { CardActions, CircularProgress, TextField } from '@material-ui/core';
+import Card from '../netspective-studios/design-system/components/card/Card';
 import Button from '../foundation/ui/ui-button/Button';
 import Avatar from '../netspective-studios/design-system/components/avatar/Avatar';
 import { createMuiTheme, makeStyles } from '@material-ui/core/styles';

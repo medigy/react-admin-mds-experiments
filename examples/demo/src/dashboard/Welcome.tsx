@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { FC } from 'react';
-import { Box, Card, CardActions, Typography } from '@material-ui/core';
+import { Box, CardActions, Typography } from '@material-ui/core';
+import Card from '../netspective-studios/design-system/components/card/Card';
 import Button from '../foundation/ui/ui-link-button/UILinkButton';
 import HomeIcon from '@material-ui/icons/Home';
 import CodeIcon from '@material-ui/icons/Code';
@@ -20,6 +21,10 @@ const useStyles = makeStyles(theme => ({
         padding: 20,
         marginTop: theme.spacing(2),
         marginBottom: '1em',
+    },
+    cardBody: {
+        margin: 0,
+        padding: 0,
     },
     media: {
         background: `url(${publishArticleImage}) top right / cover`,
@@ -42,7 +47,11 @@ const Welcome: FC = () => {
     const translate = useTranslate();
     const classes = useStyles();
     return (
-        <Card className={classes.root}>
+        <Card
+            className={classes.root}
+            hasNoHeader
+            bodyClassName={classes.cardBody}
+        >
             <Box display="flex">
                 <Box flex="1">
                     <Typography variant="h5" component="h2" gutterBottom>
