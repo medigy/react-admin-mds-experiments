@@ -6,7 +6,7 @@ import {
     ListItemAvatar,
     ListItemText,
 } from '@material-ui/core';
-import UILinkButton from '../foundation/ui/ui-link-button/UILinkButton';
+import UILinkButton from '../netspective-studios/design-system/components/link-button/UILinkButton';
 import Avatar from '../netspective-studios/design-system/components/avatar/Avatar';
 import { makeStyles } from '@material-ui/core/styles';
 import CustomerIcon from '@material-ui/icons/PersonAdd';

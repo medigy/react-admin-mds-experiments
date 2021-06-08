@@ -2,7 +2,6 @@ import * as React from 'react';
 import { FC, useState } from 'react';
 import { useSelector } from 'react-redux';
 import SettingsIcon from '@material-ui/icons/Settings';
-import LabelIcon from '@material-ui/icons/Label';
 import { useMediaQuery, Theme, Box } from '@material-ui/core';
 import {
     useTranslate,
@@ -11,13 +10,7 @@ import {
     MenuProps,
 } from 'react-admin';
 
-import visitors from '../visitors';
-import orders from '../orders';
-import invoices from '../invoices';
-import products from '../products';
-import categories from '../categories';
-import reviews from '../reviews';
-import SubMenu from './SubMenu';
+import VerticalNavigation from '../netspective-studios/design-system/components/vertical-navigation/VerticalNavigation';
 import { AppState } from '../types';
 
 type MenuName = 'menuCatalog' | 'menuSales' | 'menuCustomers';
@@ -39,107 +32,40 @@ const Menu: FC<MenuProps> = ({ onMenuClick, logout, dense = false }) => {
         setState(state => ({ ...state, [menu]: !state[menu] }));
     };
 
+    const menuItems = [
+        {
+            id: 'sales',
+            label: 'Sales',
+            icon: 'user',
+            items: [
+                { id: '/commands', label: 'Orders', to: '/commands' },
+                { id: '/invoices', label: 'Invoices', to: '/invoices' },
+            ],
+        },
+        {
+            id: 'catalog',
+            label: 'Catalog',
+            icon: 'user',
+            items: [
+                { id: '/products', label: 'Products', to: '/products' },
+                { id: '/categories', label: 'Categories', to: '/categories' },
+            ],
+        },
+        {
+            id: 'customers',
+            label: 'Customers',
+            icon: 'user',
+            items: [
+                { id: '/customers', label: 'Customers', to: '/customers' },
+                { id: '/segments', label: 'Segments', to: '/segments' },
+                { id: '/reviews', label: 'Reviews', to: '/reviews' },
+            ],
+        },
+    ];
     return (
         <Box mt={1}>
-            {' '}
             <DashboardMenuItem onClick={onMenuClick} sidebarIsOpen={open} />
-            <SubMenu
-                handleToggle={() => handleToggle('menuSales')}
-                isOpen={state.menuSales}
-                sidebarIsOpen={open}
-                name="pos.menu.sales"
-                icon={<orders.icon />}
-                dense={dense}
-            >
-                <MenuItemLink
-                    to={`/commands`}
-                    primaryText={translate(`resources.commands.name`, {
-                        smart_count: 2,
-                    })}
-                    leftIcon={<orders.icon />}
-                    onClick={onMenuClick}
-                    sidebarIsOpen={open}
-                    dense={dense}
-                />
-                <MenuItemLink
-                    to={`/invoices`}
-                    primaryText={translate(`resources.invoices.name`, {
-                        smart_count: 2,
-                    })}
-                    leftIcon={<invoices.icon />}
-                    onClick={onMenuClick}
-                    sidebarIsOpen={open}
-                    dense={dense}
-                />
-            </SubMenu>
-            <SubMenu
-                handleToggle={() => handleToggle('menuCatalog')}
-                isOpen={state.menuCatalog}
-                sidebarIsOpen={open}
-                name="pos.menu.catalog"
-                icon={<products.icon />}
-                dense={dense}
-            >
-                <MenuItemLink
-                    to={`/products`}
-                    primaryText={translate(`resources.products.name`, {
-                        smart_count: 2,
-                    })}
-                    leftIcon={<products.icon />}
-                    onClick={onMenuClick}
-                    sidebarIsOpen={open}
-                    dense={dense}
-                />
-                <MenuItemLink
-                    to={`/categories`}
-                    primaryText={translate(`resources.categories.name`, {
-                        smart_count: 2,
-                    })}
-                    leftIcon={<categories.icon />}
-                    onClick={onMenuClick}
-                    sidebarIsOpen={open}
-                    dense={dense}
-                />
-            </SubMenu>
-            <SubMenu
-                handleToggle={() => handleToggle('menuCustomers')}
-                isOpen={state.menuCustomers}
-                sidebarIsOpen={open}
-                name="pos.menu.customers"
-                icon={<visitors.icon />}
-                dense={dense}
-            >
-                <MenuItemLink
-                    to={`/customers`}
-                    primaryText={translate(`resources.customers.name`, {
-                        smart_count: 2,
-                    })}
-                    leftIcon={<visitors.icon />}
-                    onClick={onMenuClick}
-                    sidebarIsOpen={open}
-                    dense={dense}
-                />
-                <MenuItemLink
-                    to={`/segments`}
-                    primaryText={translate(`resources.segments.name`, {
-                        smart_count: 2,
-                    })}
-                    leftIcon={<LabelIcon />}
-                    onClick={onMenuClick}
-                    sidebarIsOpen={open}
-                    dense={dense}
-                />
-            </SubMenu>
-            <MenuItemLink
-                to={`/reviews`}
-                primaryText={translate(`resources.reviews.name`, {
-                    smart_count: 2,
-                })}
-                leftIcon={<reviews.icon />}
-                onClick={onMenuClick}
-                sidebarIsOpen={open}
-                dense={dense}
-            />
+            <VerticalNavigation categories={menuItems} />
             {isXSmall && (
                 <MenuItemLink
                     to="/configuration"

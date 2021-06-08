@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import CardContent from '@material-ui/core/CardContent';
-import Button from '../foundation/ui/ui-button/Button';
+import Button from '../netspective-studios/design-system/components/button/Button';
 import Card from '../netspective-studios/design-system/components/card/Card';
 import { useTranslate, useLocale, useSetLocale, Title } from 'react-admin';
 import { makeStyles } from '@material-ui/core/styles';

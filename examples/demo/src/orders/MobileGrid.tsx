@@ -1,7 +1,8 @@
 // in src/comments.js
 import * as React from 'react';
 import { FC } from 'react';
-import { Card, CardHeader, CardContent } from '@material-ui/core';
+import { CardHeader, CardContent } from '@material-ui/core';
+import Card from '../netspective-studios/design-system/components/card/Card';
 import { makeStyles } from '@material-ui/core/styles';
 import {
     DateField,
@@ -23,6 +24,9 @@ const useListStyles = makeStyles(theme => ({
         display: 'flex',
         flexDirection: 'column',
         margin: '0.5rem 0',
+    },
+    cardBody: {
+        margin: 0,
     },
     cardTitleContent: {
         display: 'flex',
@@ -56,7 +60,12 @@ const MobileGrid: FC<MobileGridProps> = ({ ids, data, basePath }) => {
     return (
         <div style={{ margin: '1em' }}>
             {ids.map(id => (
-                <Card key={id} className={classes.card}>
+                <Card
+                    key={id}
+                    className={classes.card}
+                    hasNoHeader
+                    bodyClassName={classes.cardBody}
+                >
                     <CardHeader
                         title={
                             <div className={classes.cardTitleContent}>

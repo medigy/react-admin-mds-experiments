@@ -7,7 +7,7 @@ import { useLocation } from 'react-router-dom';
 import { CardActions, CircularProgress } from '@material-ui/core';
 import Input from '../netspective-studios/design-system/components/input/Input';
 import Card from '../netspective-studios/design-system/components/card/Card';
-import Button from '../foundation/ui/ui-button/Button';
+import Button from '../netspective-studios/design-system/components/button/Button';
 import Avatar from '../netspective-studios/design-system/components/avatar/Avatar';
 import { createMuiTheme, makeStyles } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';

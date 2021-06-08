@@ -12,7 +12,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import CommentIcon from '@material-ui/icons/Comment';
 import { Link } from 'react-router-dom';
 import { useTranslate } from 'react-admin';
-import UILinkButton from '../foundation/ui/ui-link-button/UILinkButton';
+import UILinkButton from '../netspective-studios/design-system/components/link-button/UILinkButton';
 
 import CardWithIcon from './CardWithIcon';
 import StarRatingField from '../reviews/StarRatingField';

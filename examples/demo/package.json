@@ -33,11 +33,11 @@
         "redux-saga": "^1.0.0"
     },
     "scripts": {
-        "start": "react-app-rewired start",
+        "start": "cross-env REACT_APP_DATA_PROVIDER=rest react-app-rewired start",
         "build": "react-app-rewired build",
         "test": "react-app-rewired test --env=jsdom"
     },
-    "homepage": "https://marmelab.com/react-admin-demo",
+    "homepage": "/",
     "browserslist": [
         ">0.2%",
         "not dead",

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { FC } from 'react';
-import Button from '../foundation/ui/ui-link-button/UILinkButton';
+import Button from '../netspective-studios/design-system/components/link-button/UILinkButton';
 import { makeStyles } from '@material-ui/core/styles';
 import { useTranslate, FieldProps } from 'react-admin';
 import { stringify } from 'query-string';

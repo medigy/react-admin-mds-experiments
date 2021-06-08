@@ -13,7 +13,7 @@ import {
     BulkActionProps,
     Identifier,
 } from 'react-admin';
-import Button from '../foundation/ui/ui-button/Button';
+import Button from '../netspective-studios/design-system/components/button/Button';
 
 const noSelection: Identifier[] = [];
 

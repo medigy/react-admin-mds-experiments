@@ -1,11 +1,7 @@
 import * as React from 'react';
 import { FC } from 'react';
 import Card from '../netspective-studios/design-system/components/card/Card';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
+import DataTable from '../netspective-studios/design-system/components/table/Table';
 import { makeStyles } from '@material-ui/core/styles';
 import { useTranslate, Title } from 'react-admin';
 
@@ -25,6 +21,26 @@ const useStyles = makeStyles({
 const Segments: FC = () => {
     const translate = useTranslate();
     const classes = useStyles();
+
+    const columns = [
+        {
+            key: 'name',
+            property: 'name',
+            label: translate('resources.segments.fields.name'),
+        },
+        {
+            key: 'name',
+            property: 'id',
+            label: '',
+            render: (text: any) => <LinkToRelatedCustomers segment={text} />,
+        },
+    ];
+
+    const dataSource = segments.map(segment => ({
+        id: segment.id,
+        name: translate(segment.name),
+    }));
+
     return (
         <Card
             className={classes.root}
@@ -34,26 +50,7 @@ const Segments: FC = () => {
             <Title
                 title={translate('resources.segments.name', { smart_count: 2 })}
             />
-            <Table size="small">
-                <TableHead>
-                    <TableRow>
-                        <TableCell>
-                            {translate('resources.segments.fields.name')}
-                        </TableCell>
-                        <TableCell />
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    {segments.map(segment => (
-                        <TableRow key={segment.id}>
-                            <TableCell>{translate(segment.name)}</TableCell>
-                            <TableCell>
-                                <LinkToRelatedCustomers segment={segment.id} />
-                            </TableCell>
-                        </TableRow>
-                    ))}
-                </TableBody>
-            </Table>
+            <DataTable columns={columns} dataSource={dataSource} />
         </Card>
     );
 };

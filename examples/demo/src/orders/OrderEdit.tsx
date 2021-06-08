@@ -14,14 +14,8 @@ import {
     useTranslate,
 } from 'react-admin';
 import { Link as RouterLink } from 'react-router-dom';
-import {
-    Card,
-    CardContent,
-    Box,
-    Grid,
-    Typography,
-    Link,
-} from '@material-ui/core';
+import { CardContent, Box, Grid, Typography, Link } from '@material-ui/core';
+import Card from '../netspective-studios/design-system/components/card/Card';
 import { makeStyles } from '@material-ui/core/styles';
 
 import { Order, Customer } from '../types';
@@ -89,7 +83,7 @@ const OrderForm = (props: any) => {
             {...props}
             render={(formProps: any) => (
                 <Box maxWidth="50em">
-                    <Card>
+                    <Card hasNoHeader>
                         <CardContent>
                             <Grid container spacing={1}>
                                 <Grid item xs={12} sm={12} md={8}>

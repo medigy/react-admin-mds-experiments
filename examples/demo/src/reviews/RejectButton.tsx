@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { FC } from 'react';
 import PropTypes from 'prop-types';
-import Button from '../foundation/ui/ui-button/Button';
+import Button from '../netspective-studios/design-system/components/button/Button';
 import ThumbDown from '@material-ui/icons/ThumbDown';
 import { useTranslate, useUpdate, useNotify, useRedirect } from 'react-admin';
 import { Review } from '../types';

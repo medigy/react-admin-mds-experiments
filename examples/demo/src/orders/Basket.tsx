@@ -1,12 +1,6 @@
 import * as React from 'react';
 import { FC } from 'react';
-import {
-    Table,
-    TableBody,
-    TableCell,
-    TableHead,
-    TableRow,
-} from '@material-ui/core';
+import DataTable from '../netspective-studios/design-system/components/table/Table';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link, FieldProps, useTranslate, useQueryWithStore } from 'react-admin';
 
@@ -51,63 +45,65 @@ const Basket: FC<FieldProps<Order>> = ({ record }) => {
 
     if (!loaded || !record) return null;
 
+    const columns = [
+        {
+            key: 'reference',
+            label: translate('resources.commands.fields.basket.reference'),
+            property: 'reference',
+            render: (text: any, row: any) => {
+                return <Link to={`/products/${row.id}`}>{text}</Link>;
+            },
+        },
+        {
+            key: 'unit_price',
+            label: translate('resources.commands.fields.basket.unit_price'),
+            property: 'unit_price',
+        },
+        {
+            key: 'quantity',
+            label: translate('resources.commands.fields.basket.quantity'),
+            property: 'quantity',
+        },
+        {
+            key: 'total',
+            label: translate('resources.commands.fields.basket.total'),
+            property: 'total',
+        },
+    ];
+
+    const dataSource = [];
+    if (record?.basket) {
+        for (let i = 0; i < record.basket.length; i++) {
+            const item = record.basket[i];
+            if (products[item.product_id]) {
+                dataSource.push({
+                    id: item.product_id,
+                    reference: products[item.product_id].reference,
+                    unit_price: products[item.product_id].price.toLocaleString(
+                        undefined,
+                        {
+                            style: 'currency',
+                            currency: 'USD',
+                        }
+                    ),
+                    quantity: item.quantity,
+                    total: (
+                        products[item.product_id].price * item.quantity
+                    ).toLocaleString(undefined, {
+                        style: 'currency',
+                        currency: 'USD',
+                    }),
+                });
+            }
+        }
+    }
+
     return (
-        <Table>
-            <TableHead>
-                <TableRow>
-                    <TableCell>
-                        {translate(
-                            'resources.commands.fields.basket.reference'
-                        )}
-                    </TableCell>
-                    <TableCell className={classes.rightAlignedCell}>
-                        {translate(
-                            'resources.commands.fields.basket.unit_price'
-                        )}
-                    </TableCell>
-                    <TableCell className={classes.rightAlignedCell}>
-                        {translate('resources.commands.fields.basket.quantity')}
-                    </TableCell>
-                    <TableCell className={classes.rightAlignedCell}>
-                        {translate('resources.commands.fields.basket.total')}
-                    </TableCell>
-                </TableRow>
-            </TableHead>
-            <TableBody>
-                {record.basket.map(
-                    (item: any) =>
-                        products[item.product_id] && (
-                            <TableRow key={item.product_id}>
-                                <TableCell>
-                                    <Link to={`/products/${item.product_id}`}>
-                                        {products[item.product_id].reference}
-                                    </Link>
-                                </TableCell>
-                                <TableCell className={classes.rightAlignedCell}>
-                                    {products[
-                                        item.product_id
-                                    ].price.toLocaleString(undefined, {
-                                        style: 'currency',
-                                        currency: 'USD',
-                                    })}
-                                </TableCell>
-                                <TableCell className={classes.rightAlignedCell}>
-                                    {item.quantity}
-                                </TableCell>
-                                <TableCell className={classes.rightAlignedCell}>
-                                    {(
-                                        products[item.product_id].price *
-                                        item.quantity
-                                    ).toLocaleString(undefined, {
-                                        style: 'currency',
-                                        currency: 'USD',
-                                    })}
-                                </TableCell>
-                            </TableRow>
-                        )
-                )}
-            </TableBody>
-        </Table>
+        <React.Fragment>
+            {dataSource && (
+                <DataTable columns={columns} dataSource={dataSource} />
+            )}
+        </React.Fragment>
     );
 };
 

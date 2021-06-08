@@ -2,7 +2,7 @@ import * as React from 'react';
 import { FC } from 'react';
 import { Box, CardActions, Typography } from '@material-ui/core';
 import Card from '../netspective-studios/design-system/components/card/Card';
-import Button from '../foundation/ui/ui-link-button/UILinkButton';
+import Button from '../netspective-studios/design-system/components/link-button/UILinkButton';
 import HomeIcon from '@material-ui/icons/Home';
 import CodeIcon from '@material-ui/icons/Code';
 import { makeStyles } from '@material-ui/core/styles';

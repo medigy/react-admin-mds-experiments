@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { FC } from 'react';
-import UILinkButton from '../foundation/ui/ui-link-button/UILinkButton';
+import UILinkButton from '../netspective-studios/design-system/components/link-button/UILinkButton';
 import { makeStyles } from '@material-ui/core/styles';
 import { useTranslate } from 'react-admin';
 import { stringify } from 'query-string';
