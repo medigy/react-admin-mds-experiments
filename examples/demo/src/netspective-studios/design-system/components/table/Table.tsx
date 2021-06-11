@@ -3,17 +3,19 @@ import DataTable from '@salesforce/design-system-react/components/data-table';
 import DataTableCell from '@salesforce/design-system-react/components/data-table/cell';
 import DataTableColumn from '@salesforce/design-system-react/components/data-table/column';
 
-const CustomDataTableCell = ({ children, ...props }) => (
+const CustomTableCell: React.FC = (props: any) => <DataTableCell {...props} />;
+
+const CustomDataTableCell = (props: any) => (
     <DataTableCell {...props}>
-        {props.render(children, props.item)}
+        {props.render(props.children, props.item)}
     </DataTableCell>
 );
 
-CustomDataTableCell.displayName = DataTableCell.displayName;
+CustomDataTableCell.displayName = CustomTableCell.displayName;
 
-const Table = props => {
+const Table = (props: any) => {
     if (props.dataSource && props.columns?.length) {
-        const columns = props.columns.map(item => {
+        const columns = props.columns.map((item: any) => {
             if (item.render) {
                 return (
                     <DataTableColumn
