@@ -2,7 +2,7 @@ import React from 'react';
 import Button from '@salesforce/design-system-react/components/button';
 import { withRouter } from 'react-router-dom';
 
-const UIButton = props => {
+const UIButton = (props: any) => {
     const { history } = props;
 
     const onClickHandler = () => {
