@@ -21,7 +21,6 @@ const LinkToRelatedProducts: FC<FieldProps<Category>> = ({ record }) => {
     const classes = useStyles();
     return record ? (
         <Button
-            size="small"
             variant="neutral"
             to={{
                 pathname: '/products',

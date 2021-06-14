@@ -20,8 +20,6 @@ const LinkToRelatedCustomers: FC<{ segment: string }> = ({ segment }) => {
     const classes = useStyles();
     return (
         <UILinkButton
-            size="small"
-            color="primary"
             variant="base"
             to={{
                 pathname: '/customers',

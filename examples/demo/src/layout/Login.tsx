@@ -67,7 +67,6 @@ const renderInput = ({
             errorText={!!(touched && error) ? error : ''}
             {...inputProps}
             {...props}
-            fullWidth
         />
     );
 };

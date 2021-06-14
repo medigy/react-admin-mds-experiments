@@ -40,13 +40,7 @@ const RejectButton: FC<{ record: Review }> = ({ record }) => {
     );
 
     return record && record.status === 'pending' ? (
-        <Button
-            variant="outline-brand"
-            color="primary"
-            size="small"
-            onClick={reject}
-            disabled={loading}
-        >
+        <Button variant="outline-brand" onClick={reject} disabled={loading}>
             <ThumbDown
                 color="primary"
                 style={{ paddingRight: '0.5em', color: 'red' }}
