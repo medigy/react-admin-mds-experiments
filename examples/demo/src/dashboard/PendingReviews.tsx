@@ -51,10 +51,9 @@ const PendingReviews: FC<Props> = ({ reviews = [], customers = {}, nb }) => {
                                     }?size=32x32`}
                                     size="medium"
                                     variant="user"
-                                    className={classes.avatar}
                                 />
                             ) : (
-                                <Avatar />
+                                <Avatar variant="user" size="medium" />
                             )}
                         </ListItemAvatar>
 

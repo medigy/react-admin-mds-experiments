@@ -131,7 +131,7 @@ const Login = () => {
                     <div className={classes.main}>
                         <Card className={classes.card}>
                             <div className={classes.avatar}>
-                                <Avatar className={classes.icon}>
+                                <Avatar variant="user" size="medium">
                                     <LockIcon />
                                 </Avatar>
                             </div>
