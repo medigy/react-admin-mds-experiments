@@ -14,14 +14,14 @@ const AvatarField: FC<Props> = ({ record, size = '25', className }) =>
         <Avatar
             src={`${record.avatar}?size=${size}x${size}`}
             variant="user"
-            record={record}
+            // record={record}
             size="small"
-            style={{
-                width: parseInt(size, 10),
-                height: parseInt(size, 10),
-                marginRight: 5,
-            }}
-            className={className}
+            // style={{
+            //     width: parseInt(size, 10),
+            //     height: parseInt(size, 10),
+            //     marginRight: 5,
+            // }}
+            // className={className}
         />
     ) : null;
 

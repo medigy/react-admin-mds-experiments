@@ -23,7 +23,10 @@ import {
     useGetList,
     useListContext,
 } from 'react-admin';
-import { useMediaQuery, Divider, Tabs, Tab, Theme } from '@material-ui/core';
+import { useMediaQuery, Theme } from '@material-ui/core';
+
+import DSTabs from '../netspective-studios/design-system/components/tabs/Tabs';
+import DSTabsPanel from '../netspective-studios/design-system/components/tabs-panel/TabsPanel';
 
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -55,12 +58,6 @@ const OrderFilter: FC<Omit<FilterProps, 'children'>> = props => (
 const useDatagridStyles = makeStyles({
     total: { fontWeight: 'bold' },
 });
-
-const tabs = [
-    { id: 'ordered', name: 'ordered' },
-    { id: 'delivered', name: 'delivered' },
-    { id: 'cancelled', name: 'cancelled' },
-];
 
 interface TabbedDatagridProps extends DatagridProps {}
 
@@ -124,7 +121,7 @@ const TabbedDatagrid: FC<TabbedDatagridProps> = props => {
     }, [ids, filterValues.status]);
 
     const handleChange = useCallback(
-        (event: React.ChangeEvent<{}>, value: any) => {
+        (value: any) => {
             setFilters &&
                 setFilters(
                     { ...filterValues, status: value },
@@ -141,37 +138,55 @@ const TabbedDatagrid: FC<TabbedDatagridProps> = props => {
             ? delivered
             : cancelled;
 
+    const smallViewContent = () => {
+        return (
+            <ListContextProvider value={{ ...listContext, ids: selectedIds }}>
+                <MobileGrid {...props} ids={selectedIds} />
+            </ListContextProvider>
+        );
+    };
+
+    const getSelectedTabId = () => {
+        const status = filterValues.status;
+        if (status === 'ordered') {
+            return 0;
+        } else if (status === 'delivered') {
+            return 1;
+        } else {
+            return 2;
+        }
+    };
+
+    const handleTabChange = (s: any) => {
+        let value = '';
+
+        if (s === 0) {
+            value = 'ordered';
+        } else if (s === 1) {
+            value = 'delivered';
+        } else {
+            value = 'cancelled';
+        }
+        handleChange(value);
+    };
+
     return (
         <Fragment>
-            <Tabs
-                variant="fullWidth"
-                centered
-                value={filterValues.status}
-                indicatorColor="primary"
-                onChange={handleChange}
+            <DSTabs
+                variant="scoped"
+                selectedIndex={getSelectedTabId()}
+                onSelect={handleTabChange}
             >
-                {tabs.map(choice => (
-                    <Tab
-                        key={choice.id}
-                        label={
-                            totals[choice.name]
-                                ? `${choice.name} (${totals[choice.name]})`
-                                : choice.name
-                        }
-                        value={choice.id}
-                    />
-                ))}
-            </Tabs>
-            <Divider />
-            {isXSmall ? (
-                <ListContextProvider
-                    value={{ ...listContext, ids: selectedIds }}
+                <DSTabsPanel
+                    label={
+                        totals['ordered']
+                            ? `Ordered (${totals['ordered']})`
+                            : 'Ordered'
+                    }
                 >
-                    <MobileGrid {...props} ids={selectedIds} />
-                </ListContextProvider>
-            ) : (
-                <div>
-                    {filterValues.status === 'ordered' && (
+                    {isXSmall ? (
+                        smallViewContent()
+                    ) : (
                         <ListContextProvider
                             value={{ ...listContext, ids: ordered }}
                         >
@@ -199,7 +214,17 @@ const TabbedDatagrid: FC<TabbedDatagridProps> = props => {
                             </Datagrid>
                         </ListContextProvider>
                     )}
-                    {filterValues.status === 'delivered' && (
+                </DSTabsPanel>
+                <DSTabsPanel
+                    label={
+                        totals['delivered']
+                            ? `Delivered (${totals['delivered']})`
+                            : 'Delivered'
+                    }
+                >
+                    {isXSmall ? (
+                        smallViewContent()
+                    ) : (
                         <ListContextProvider
                             value={{ ...listContext, ids: delivered }}
                         >
@@ -228,7 +253,17 @@ const TabbedDatagrid: FC<TabbedDatagridProps> = props => {
                             </Datagrid>
                         </ListContextProvider>
                     )}
-                    {filterValues.status === 'cancelled' && (
+                </DSTabsPanel>
+                <DSTabsPanel
+                    label={
+                        totals['cancelled']
+                            ? `Cancelled (${totals['cancelled']})`
+                            : 'Cancelled'
+                    }
+                >
+                    {isXSmall ? (
+                        smallViewContent()
+                    ) : (
                         <ListContextProvider
                             value={{ ...listContext, ids: cancelled }}
                         >
@@ -257,8 +292,8 @@ const TabbedDatagrid: FC<TabbedDatagridProps> = props => {
                             </Datagrid>
                         </ListContextProvider>
                     )}
-                </div>
-            )}
+                </DSTabsPanel>
+            </DSTabs>
         </Fragment>
     );
 };

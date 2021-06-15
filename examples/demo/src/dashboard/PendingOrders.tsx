@@ -57,9 +57,10 @@ const PendingOrders: FC<Props> = ({ orders = [], customers = {} }) => {
                                         customers[record.customer_id].avatar
                                     }?size=32x32`}
                                     size="medium"
+                                    variant="user"
                                 />
                             ) : (
-                                <Avatar />
+                                <Avatar variant="user" size="medium" />
                             )}
                         </ListItemAvatar>
                         <ListItemText
